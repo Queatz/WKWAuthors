@@ -27,3 +27,23 @@
 .remaining {
   padding-right: 1rem;
 }
+
+.congrats {
+  font-size: 200%;
+}
+
+.space-right {
+    margin-right: 1rem;
+}
+
+.qp-name {
+  font-weight: 500;
+}
+
+.qp-price-btn {
+  width: 100%;
+}
+
+.qp-finish-up {
+  margin-bottom: 1rem;
+}

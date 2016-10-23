@@ -1,4 +1,4 @@
-<div class="card new-qp-card" *ngIf="!showQuestion">
+<div class="card new-qp-card" *ngIf="!show">
   <form (ngSubmit)="next(f)" #f="ngForm" novalidate>
     <div class="card-content">
       <div class="card-title">
@@ -6,7 +6,7 @@
           Create your first Question Pack
         </span>
         <span *ngIf="state.getQuestionPacks().length > 0">
-          Create a Question Pack
+          Create a new Question Pack
         </span>
       </div>
       <div>
@@ -15,6 +15,8 @@
       </div>
       <p class="grey-text">
         Later you'll be able to add additional information and set the price.
+        You can make changes later.
+        Your progress will be saved.
       </p>
     </div>
     <div class="card-action right-align">
@@ -23,7 +25,7 @@
   </form>
 </div>
 
-<div class="card new-qp-card" *ngIf="showQuestion">
+<div class="card new-qp-card" *ngIf="show === 'question' && questionIndex < questionPackSize">
   <form (ngSubmit)="nextQuestion(f)" #f="ngForm" novalidate>
     <div class="card-content">
       <div class="card-title">
@@ -39,21 +41,91 @@
         <textarea id="q-text" class="materialize-textarea"
                   [(ngModel)]="form.questions[questionIndex].text"
                   name="q-text"
-                  type="text"
                   autofocus
                   placeholder="Enter your question"></textarea>
       </div>
       <div [hidden]="!form.questions[questionIndex].text">
         <div *ngFor="let i of [0, 1, 2, 3]">
-          <input [(ngModel)]="form.questions[questionIndex].choices[i]" name="qp-choice" type="text" placeholder="Enter choice {{i + 1}}" />
+          <input [(ngModel)]="form.questions[questionIndex].choices[i]" name="qp-choice" type="text" placeholder="Enter choice #{{i + 1}}" />
         </div>
       </div>
     </div>
     <div class="card-action right-align">
       <span class="remaining grey-text">
-        {{ questionIndex + 1 }} / 40
+        {{ questionIndex + 1 }} / {{ questionPackSize }}
       </span>
-      <button class="btn blue-grey" [disabled]="!canAdvance()">Next Question</button>
+      <button class="btn blue-grey" [disabled]="!canAdvance()">
+        <span *ngIf="questionIndex !== questionPackSize - 1">Next Question</span>
+        <span *ngIf="questionIndex === questionPackSize - 1">Continue</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="card new-qp-card" *ngIf="show === 'question' && questionIndex >= questionPackSize">
+  <div class="card-content">
+    <div class="card-title display-font congrats">
+      Congratulations!
+    </div>
+    <br />
+    <p>
+      You've completed {{ state.getQuestionPacks().length === 1 ? 'your first' : 'another' }} Question Pack.
+    </p>
+    <br />
+    <p>
+      On the next page, you'll finish up with the details.
+      Or, if you'd like, you can keep going.
+    </p>
+  </div>
+  <div class="card-action right-align">
+    <button class="btn blue-grey space-right lighten-2" (click)="keepGoing()">Keep Going (+10 Questions)</button>
+    <button class="btn blue-grey" (click)="finishUp()">Finish Up</button>
+  </div>
+</div>
+
+
+<div class="card new-qp-card" *ngIf="show === 'details'">
+  <form #f="ngForm" (ngSubmit)="submitForReview(f)" novalidate>
+    <div class="card-content">
+      <div class="card-title">
+        Finish Up
+      </div>
+      <div class="grey-text qp-finish-up">
+        Set your price
+      </div>
+      <div class="row">
+        <div class="col m4">
+          <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': form.price !== '$0.99'}" (click)="selectPrice('$0.99')">
+            $0.99
+          </div>
+        </div>
+        <div class="col m4">
+          <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': form.price !== '$1.99'}" (click)="selectPrice('$1.99')">
+            $1.99
+          </div>
+        </div>
+        <div class="col m4">
+          <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': form.price !== '$2.99'}" (click)="selectPrice('$2.99')">
+            $2.99
+          </div>
+        </div>
+      </div>
+      <div class="grey-text qp-finish-up" *ngIf="form.price">
+        You will get $10 for each {{ calcProfit() }} sold
+      </div>
+      <div class="grey-text">
+        Describe <span class="qp-name">{{ form.name }}</span> in a few words
+      </div>
+      <div>
+        <textarea id="q-desc" class="materialize-textarea"
+                  [(ngModel)]="form.description"
+                  name="q-text"
+                  autofocus
+                  placeholder="Enter your description"></textarea>
+      </div>
+    </div>
+    <div class="card-action right-align">
+      <button class="btn blue-grey" [disabled]="!form.price || form.description.length < 24">Submit for Review</button>
     </div>
   </form>
 </div>

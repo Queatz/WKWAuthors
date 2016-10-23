@@ -10,32 +10,37 @@ import { StateService }   from './state.service';
 export class NewQPComponent {
   public form: any = {
     name: '',
+    description: '',
+    price: '',
     questions: []
   };
 
   public questionIndex: number;
-  public showQuestion: boolean;
+  public questionPackSize: number;
+  public show: string;
 
   constructor(private state: StateService, private ngZone: NgZone) {
   }
 
   public next(form: NgForm) {
-    this.state.getQuestionPacks().push({
+    this.qp = {
       id: '3',
       name: this.form.name,
       price: 'DRAFT'
-    });
+    };
+
+    this.state.getQuestionPacks().push(this.qp);
 
     this.questionIndex = 0;
-    this.form.questions.push(this.blankQuestion());
-
-    this.showQuestion = true;
+    this.questionPackSize = 1; // 40
+    this.form.questions.push(this.newBlankQuestion());
+    this.show = 'question';
 
     return false;
   }
 
   public nextQuestion(form: NgForm) {
-    this.form.questions.push(this.blankQuestion());
+    this.form.questions.push(this.newBlankQuestion());
     this.questionIndex += 1;
 
     return false;
@@ -50,7 +55,30 @@ export class NewQPComponent {
       && q.choices[3];
   }
 
-  private blankQuestion() {
+  public keepGoing() {
+    this.questionPackSize += 2; // 10
+  }
+
+  public finishUp() {
+    this.show = 'details';
+  }
+
+  public selectPrice(price: string) {
+    this.form.price = price;
+    this.qp.price = this.form.price;
+  }
+
+  public calcProfit() {
+    return Math.ceil(20 / +this.form.price.slice(1));
+  }
+
+  public submitForReview(form: NgForm) {
+    this.show = 'done';
+
+    return false;
+  }
+
+  private newBlankQuestion() {
     return {
       text: '',
       choices: [
