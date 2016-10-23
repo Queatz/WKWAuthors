@@ -8,6 +8,19 @@ export class StateService {
   public user: any;
   public ready: boolean;
 
+  private questionPacks = [
+    {
+      id: '1',
+      name: 'Quesiton pack 1',
+      price: '$0.99'
+    },
+    {
+      id: '2',
+      name: 'Forest Sex Adventure',
+      price: '$2.99'
+    }
+  ];
+
   constructor(private router: Router, private ngZone: NgZone) {
     gapi.load('auth2', () => {
       gapi.auth2.init();
@@ -36,7 +49,7 @@ export class StateService {
     });
   }
 
-  public load(googleUser: any, advance: boolean) {
+  public load(googleUser: any, advance?: boolean) {
     this.ngZone.run(() => {
       this.user = googleUser;
       this.ready = true;
@@ -50,7 +63,11 @@ export class StateService {
       } else {
         this.router.navigate(['/'])
       }
-  });
+    });
+  }
+
+  public getQuestionPacks() {
+    return this.questionPacks;
   }
 
 }

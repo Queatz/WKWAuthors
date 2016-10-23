@@ -7,7 +7,7 @@
       <span class="click blue-grey-text wkw-name" (click)="state.signout()">Signout</span>
     </div>
     <div class="heading">{{ state.getName() }}'s Question Packs</div>
-    <a *ngFor="let qp of qps" routerLink="['/qp', qp.id]" class="blue-grey-text qp">
+    <a *ngFor="let qp of state.getQuestionPacks()" [routerLink]="['/home/qp', qp.id]" class="blue-grey-text qp">
       <div class="qp-name">
         {{ qp.name }}
       </div>
@@ -16,7 +16,7 @@
       </div>
     </a>
 
-    <div class="btn blue-grey lighten-1 sidebar-btn">
+    <div class="btn blue-grey lighten-1 sidebar-btn" routerLink="/home/new">
       New Question Pack
     </div>
   </div>

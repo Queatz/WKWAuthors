@@ -1,0 +1,29 @@
+:host {
+  width: 100%;
+}
+
+.new-qp-card {
+  width: 640px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+
+  animation-name: slide-in-up;
+  animation-duration: .225s;
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.remaining {
+  padding-right: 1rem;
+}

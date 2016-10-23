@@ -1,5 +1,5 @@
 :host {
-  width: 270px;
+  min-width: 270px;
   background: rgba(0, 0, 0, 0.09);
   border-right: 2px solid rgba(255, 255, 255, 0.77);
 }

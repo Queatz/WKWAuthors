@@ -1,10 +1,4 @@
 <div class="home-layout">
   <sidebar></sidebar>
-  <div class="newcomer" *ngIf="state.ready">
-    <div>
-      <span class="transcribe">Welcome back, {{ state.getName() }}.  You don't have any Question Packs released yet.  Want to make one now?</span>
-      <br /><br />
-      <div class="btn blue-grey">New Question Pack</div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

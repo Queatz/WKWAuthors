@@ -32,4 +32,5 @@ export class SigninComponent implements AfterViewInit {
       scope: 'profile email',
       redirect_uri: 'postmessage'
     });
+  }
 }

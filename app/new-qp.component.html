@@ -1,0 +1,59 @@
+<div class="card new-qp-card" *ngIf="!showQuestion">
+  <form (ngSubmit)="next(f)" #f="ngForm" novalidate>
+    <div class="card-content">
+      <div class="card-title">
+        <span *ngIf="state.getQuestionPacks().length === 0">
+          Create your first Question Pack
+        </span>
+        <span *ngIf="state.getQuestionPacks().length > 0">
+          Create a Question Pack
+        </span>
+      </div>
+      <div>
+        <label for="qp-name">Name your Question Pack</label>
+        <input id="qp-name" [(ngModel)]="form.name" name="qp-name" type="text" autofocus placeholder="Enter a name" />
+      </div>
+      <p class="grey-text">
+        Later you'll be able to add additional information and set the price.
+      </p>
+    </div>
+    <div class="card-action right-align">
+      <button class="btn blue-grey" [disabled]="!form.name">Continue</button>
+    </div>
+  </form>
+</div>
+
+<div class="card new-qp-card" *ngIf="showQuestion">
+  <form (ngSubmit)="nextQuestion(f)" #f="ngForm" novalidate>
+    <div class="card-content">
+      <div class="card-title">
+        <span *ngIf="state.getQuestionPacks().length === 1">
+          Create your first question
+        </span>
+        <span *ngIf="state.getQuestionPacks().length > 1">
+          Add a question
+        </span>
+      </div>
+      <div>
+        <label for="q-text">Enter your question</label>
+        <textarea id="q-text" class="materialize-textarea"
+                  [(ngModel)]="form.questions[questionIndex].text"
+                  name="q-text"
+                  type="text"
+                  autofocus
+                  placeholder="Enter your question"></textarea>
+      </div>
+      <div [hidden]="!form.questions[questionIndex].text">
+        <div *ngFor="let i of [0, 1, 2, 3]">
+          <input [(ngModel)]="form.questions[questionIndex].choices[i]" name="qp-choice" type="text" placeholder="Enter choice {{i + 1}}" />
+        </div>
+      </div>
+    </div>
+    <div class="card-action right-align">
+      <span class="remaining grey-text">
+        {{ questionIndex + 1 }} / 40
+      </span>
+      <button class="btn blue-grey" [disabled]="!canAdvance()">Next Question</button>
+    </div>
+  </form>
+</div>

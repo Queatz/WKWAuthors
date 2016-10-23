@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { StateService } from './state.service';
 
 @Component({
-  selector: 'sidebar',
-  templateUrl: 'app/sidebar.component.html',
-  styleUrls: ['app/sidebar.component.css']
+  selector: 'no-qp',
+  templateUrl: 'app/no-qp.component.html',
+  styleUrls: ['app/no-qp.component.css']
 })
-export class SidebarComponent {
+export class NoQPComponent {
   constructor(private state: StateService) {
   }
 }
