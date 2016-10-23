@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { StateService } from './state.service';
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css']
+  selector: 'entryway-screen',
+  templateUrl: 'app/entryway.component.html',
+  styleUrls: ['app/entryway.component.css']
 })
-export class AppComponent {
+export class EntrywayComponent {
   constructor(private state: StateService) {
   }
 }

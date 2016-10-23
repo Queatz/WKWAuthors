@@ -1,0 +1,15 @@
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-shadow: -2px 1px 3px #929292;
+
+  transition: all .25s;
+  transition-delay: 1s;
+}
+
+.centered.fade-down {
+  opacity: 0;
+}

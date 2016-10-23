@@ -1,0 +1,24 @@
+<div>
+  <div class="top">
+    <div class="brand">
+      <div class="wkw-name">Who Knows Who</div>
+      Author's Corner
+      <br />
+      <span class="click blue-grey-text wkw-name" (click)="state.signout()">Signout</span>
+    </div>
+    <div class="heading">{{ state.getName() }}'s Question Packs</div>
+    <a *ngFor="let qp of qps" routerLink="['/qp', qp.id]" class="blue-grey-text qp">
+      <div class="qp-name">
+        {{ qp.name }}
+      </div>
+      <div class="qb-price">
+        {{ qp.price }}
+      </div>
+    </a>
+
+    <div class="btn blue-grey lighten-1 sidebar-btn">
+      New Question Pack
+    </div>
+  </div>
+
+</div>

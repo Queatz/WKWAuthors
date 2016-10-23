@@ -1,0 +1,43 @@
+:host {
+  width: 270px;
+  background: rgba(0, 0, 0, 0.09);
+  border-right: 2px solid rgba(255, 255, 255, 0.77);
+}
+
+.top {
+  margin: 1rem;
+}
+
+.wkw-name {
+  font-size: 75%;
+}
+
+.brand {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+
+}
+
+.click {
+  cursor: pointer;
+}
+
+.heading {
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.qp {
+  display: flex;
+  justify-content: space-between;
+  padding-top: .25rem;
+}
+
+.sidebar-btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
