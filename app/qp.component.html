@@ -1,3 +1,5 @@
-<div>
-  qp {{ qpId }}
+<div class="wrapper">
+  <qp-edit-details [qp]="qp" *ngIf="qp && !editQuestion"></qp-edit-details>
+  <qp-edit-question [question]="editQuestion" *ngIf="qp && editQuestion"></qp-edit-question>
+  <qp-questions-nav [qp]="qp" *ngIf="qp"></qp-questions-nav>
 </div>

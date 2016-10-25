@@ -1,0 +1,60 @@
+<div>
+  <div class="card">
+    <form #f="ngForm" (ngSubmit)="saveQP(f)">
+      <div class="card-content">
+        <div class="input-field">
+          <input id="qp-name"
+                 class="qp-name-input"
+                 [(ngModel)]="qp.name"
+                 name="qp-name"
+                 type="text"
+                 autofocus
+                 placeholder="Enter a name" />
+        </div>
+        <div class="input-field">
+          <textarea id="qp-text" class="materialize-textarea"
+                    [(ngModel)]="qp.description"
+                    name="qp-text"
+                    autofocus
+                    placeholder="Enter your description"></textarea>
+        </div>
+        <div class="grey-text qp-finish-up">
+          Set your price
+        </div>
+        <div class="row">
+          <div class="col m4">
+            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$0.99'}" (click)="selectPrice('$0.99')">
+              $0.99
+            </div>
+          </div>
+          <div class="col m4">
+            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$1.99'}" (click)="selectPrice('$1.99')">
+              $1.99
+            </div>
+          </div>
+          <div class="col m4">
+            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$2.99'}" (click)="selectPrice('$2.99')">
+              $2.99
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-action right-align">
+        <button class="btn blue-grey" [disabled]="!unsavedChanges">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card" *ngIf="qp.status === 'draft'">
+      <div class="card-content action-card">
+        <div class="flow-text">
+          Draft
+        </div>
+        <div class="btn blue-grey">
+          Submit for Review
+        </div>
+      </div>
+  </div>
+</div>

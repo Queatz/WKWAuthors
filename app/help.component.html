@@ -1,0 +1,39 @@
+<div class="card new-qp-card" *ngIf="!showConfirm">
+  <form (ngSubmit)="sendEmail(f)" #f="ngForm" novalidate>
+    <div class="card-content">
+      <div class="card-title">
+        Send an Email
+      </div>
+      <div>
+        <textarea id="q-text" class="materialize-textarea"
+                  [(ngModel)]="form.text"
+                  name="q-text"
+                  autofocus
+                  placeholder="How can we help?"></textarea>
+      </div>
+    </div>
+    <div class="card-action right-align">
+      <button class="btn blue-grey" [disabled]="!form.text">
+        Send Email
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="card new-qp-card" *ngIf="showConfirm">
+  <div class="card-content">
+    <div class="card-title">
+      Thank You
+    </div>
+    <div>
+      Your email has been received. We'll be in touch with you shortly at:
+      <br /><br />
+      <span class="entity-text">{{ state.getEmail() }}</span>.
+    </div>
+  </div>
+  <div class="card-action right-align">
+    <button class="btn blue-grey" routerLink="/home">
+      Back Home
+    </button>
+  </div>
+</div>

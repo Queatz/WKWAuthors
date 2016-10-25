@@ -1,6 +1,6 @@
 <div *ngIf="state.ready">
   <div>
-    <span class="transcribe">Welcome back, {{ state.getName() }}.
+    <span class="transcribe">Happy {{ getDay() }}, {{ state.getName() }}.
       <span *ngIf="state.getQuestionPacks().length === 0">You don't have any Question Packs released yet.  Want to make one now?</span>
       <span *ngIf="state.getQuestionPacks().length > 0"><br /><br />Your Question Packs can be found over on the left.<br />Click the button below to start another one.</span>
     </span>

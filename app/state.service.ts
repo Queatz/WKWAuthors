@@ -12,12 +12,14 @@ export class StateService {
     {
       id: '1',
       name: 'Quesiton pack 1',
-      price: '$0.99'
+      price: '$0.99',
+      status: 'active'
     },
     {
       id: '2',
       name: 'Forest Sex Adventure',
-      price: '$2.99'
+      price: '$2.99',
+      status: 'active'
     }
   ];
 
@@ -40,6 +42,12 @@ export class StateService {
   public getName() {
     if (this.user) {
       return this.user.getGivenName();
+    }
+  }
+
+  public getEmail() {
+    if (this.user) {
+      return this.user.getEmail();
     }
   }
 

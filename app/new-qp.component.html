@@ -123,9 +123,14 @@
                   autofocus
                   placeholder="Enter your description"></textarea>
       </div>
+      <div class="grey-text">
+        Once your submission is approved, we'll let you know via email.  You won't be able to make
+        changes while it is under review.
+      </div>
     </div>
     <div class="card-action right-align">
-      <button class="btn blue-grey" [disabled]="!form.price || form.description.length < 24">Submit for Review</button>
+      <button class="btn blue-grey space-right lighten-2" routerLink="/home">Save as Draft</button>
+      <button class="btn blue-grey" [disabled]="!form.price || !checkWords()">Submit for Review</button>
     </div>
   </form>
 </div>

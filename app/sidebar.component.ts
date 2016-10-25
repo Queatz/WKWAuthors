@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { StateService } from './state.service';
 
 @Component({
@@ -7,6 +8,6 @@ import { StateService } from './state.service';
   styleUrls: ['app/sidebar.component.css']
 })
 export class SidebarComponent {
-  constructor(private state: StateService) {
+  constructor(private state: StateService, private route: ActivatedRoute) {
   }
 }

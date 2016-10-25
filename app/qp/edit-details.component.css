@@ -1,0 +1,20 @@
+:host {
+  flex: 1;
+}
+
+input.qp-name-input {
+  font-size: 2rem;
+}
+
+.action-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qp-price-btn {
+  width: 100%;
+}
+
+.qp-finish-up {
+  margin-bottom: 1rem;
+}

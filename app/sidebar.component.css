@@ -34,10 +34,23 @@
   display: flex;
   justify-content: space-between;
   padding-top: .25rem;
+
+  margin-left: -.5rem;
+  margin-right: -.5rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+
+  transition: background .125s;
 }
 
 .sidebar-btn {
   width: 100%;
   text-align: center;
   margin-top: 1rem;
+}
+
+.qp-active {
+  background: rgba(255, 255, 255, .5);
+
+  border-radius: 2px;
 }

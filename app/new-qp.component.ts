@@ -1,4 +1,5 @@
 import { Component, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { StateService }   from './state.service';
 
@@ -15,18 +16,20 @@ export class NewQPComponent {
     questions: []
   };
 
+  public qp: any;
   public questionIndex: number;
   public questionPackSize: number;
   public show: string;
 
-  constructor(private state: StateService, private ngZone: NgZone) {
+  constructor(private state: StateService, private ngZone: NgZone, private router: Router) {
   }
 
   public next(form: NgForm) {
     this.qp = {
       id: '3',
       name: this.form.name,
-      price: 'DRAFT'
+      price: '$0.00',
+      status: 'draft'
     };
 
     this.state.getQuestionPacks().push(this.qp);
@@ -74,8 +77,15 @@ export class NewQPComponent {
 
   public submitForReview(form: NgForm) {
     this.show = 'done';
+    this.qp.status = 'in_review';
+
+    this.router.navigate(['/home']);
 
     return false;
+  }
+
+  public checkWords() {
+    return (this.form.description.trim().match(/\s+/g) || []).length >= 2;
   }
 
   private newBlankQuestion() {
