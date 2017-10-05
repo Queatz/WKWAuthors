@@ -1,5 +1,8 @@
 <div class="wrapper">
   <qp-edit-details [qp]="qp" *ngIf="qp && !editQuestion"></qp-edit-details>
-  <qp-edit-question [question]="editQuestion" *ngIf="qp && editQuestion"></qp-edit-question>
-  <qp-questions-nav [qp]="qp" *ngIf="qp"></qp-questions-nav>
+  <qp-edit-question [disabled]="disabled()"
+                    [question]="editQuestion"
+                    (onRemove)="removeQuestion(editQuestionIndex)"
+                    *ngIf="qp && editQuestion"></qp-edit-question>
+  <qp-questions-nav [qp]="qp" (onSelect)="choose($event)" *ngIf="qp"></qp-questions-nav>
 </div>

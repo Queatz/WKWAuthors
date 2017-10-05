@@ -1,3 +1,18 @@
 .qp-nav {
   padding: 1rem;
 }
+
+.qp-q-text {
+  display: block;
+  cursor: pointer;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 2;
+}
+
+.new-btn-wrapper {
+  margin-top: .5rem;
+  text-align: center;
+}

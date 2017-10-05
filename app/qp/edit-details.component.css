@@ -18,3 +18,11 @@ input.qp-name-input {
 .qp-finish-up {
   margin-bottom: 1rem;
 }
+
+.disabled-o {
+  opacity: .5;
+}
+
+.space-right {
+  margin-right: .5rem;
+}

@@ -1,0 +1,17 @@
+:host {
+  width: 800px;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.balance {
+  font-weight: 400;
+}
+
+.b {
+  font-weight: 500;
+}

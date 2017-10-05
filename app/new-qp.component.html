@@ -46,7 +46,7 @@
       </div>
       <div [hidden]="!form.questions[questionIndex].text">
         <div *ngFor="let i of [0, 1, 2, 3]">
-          <input [(ngModel)]="form.questions[questionIndex].choices[i]" name="qp-choice" type="text" placeholder="Enter choice #{{i + 1}}" />
+          <input [(ngModel)]="form.questions[questionIndex].choices[i]" name="qp-choice-{{i}}" type="text" placeholder="Enter choice #{{i + 1}}" />
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
         </div>
       </div>
       <div class="grey-text qp-finish-up" *ngIf="form.price">
-        You will get $10 for each {{ calcProfit() }} sold
+        You will get $10 for each {{ calcProfit() }} purchased
       </div>
       <div class="grey-text">
         Describe <span class="qp-name">{{ form.name }}</span> in a few words

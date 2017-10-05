@@ -1,0 +1,14 @@
+<a [routerLink]="['/home/qp', qp.id]"  routerLinkActive="qp-active" class="blue-grey-text qp">
+  <div class="qp-name">
+    {{ qp.name }}
+  </div>
+  <div class="qb-price" *ngIf="qp.status === 'active'">
+    {{ qp.price }}
+  </div>
+  <div class="qb-price blue-grey-text text-lighten-2" *ngIf="qp.status === 'draft'">
+    Draft
+  </div>
+  <div class="qb-price blue-grey-text text-lighten-2" *ngIf="qp.status === 'in_review'">
+    In Review
+  </div>
+</a>

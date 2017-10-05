@@ -13,6 +13,8 @@ import { NewQPComponent } from './new-qp.component';
 import { NoQPComponent } from './no-qp.component';
 import { QPComponent } from './qp.component';
 import { HelpComponent } from './help.component';
+import { SidebarQPComponent } from './sidebar-qp.component';
+import { DashboardComponent } from './dashboard.component';
 
 import { QPEditDetailsComponent } from './qp/edit-details.component';
 import { QPEditQuestionComponent } from './qp/edit-question.component';
@@ -33,6 +35,9 @@ import { ApiService } from './api.service';
         {
           path: '',
           component: NoQPComponent
+        }, {
+          path: 'dashboard',
+          component: DashboardComponent
         },
         {
           path: 'new',
@@ -59,6 +64,8 @@ import { ApiService } from './api.service';
     NoQPComponent,
     QPComponent,
     HelpComponent,
+    SidebarQPComponent,
+    DashboardComponent,
 
     QPEditDetailsComponent,
     QPEditQuestionComponent,

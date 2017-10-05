@@ -1,0 +1,36 @@
+<div>
+  <div class="card">
+    <form #f="ngForm" (ngSubmit)="saveQuestion(f)" novalidate>
+      <div class="card-content">
+        <div class="input-field">
+          <label for="question-text" class="active">Enter your question</label>
+          <textarea id="question-text" class="materialize-textarea"
+                    [disabled]="disabled"
+                    [(ngModel)]="question.text"
+                    name="question-text"
+                    autofocus
+                    placeholder="Enter your question"></textarea>
+        </div>
+        <div class="input-field" *ngFor="let i of [0, 1, 2, 3]">
+          <label for="question-choice" class="active">Enter choice #{{ i + 1 }}</label>
+          <input
+                 [disabled]="disabled"
+                 id="question-choice"
+                 [(ngModel)]="question.choices[i]"
+                 type="text"
+                 name="question-choice-{{i}}"
+                 autofocus
+                 placeholder="Enter choice #{{ i + 1 }}" />
+        </div>
+      </div>
+    </form>
+    <div *ngIf="!disabled" class="card-action space-between">
+      <button class="btn-flat blue-grey-text text-lighten-2" (click)="removeQuestion()">
+        Remove
+      </button>
+      <button class="btn blue-grey" [disabled]="!unsavedChanges()" (click)="save()">
+        Save Question
+      </button>
+    </div>
+  </div>
+</div>

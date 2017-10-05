@@ -9,13 +9,18 @@
                  name="qp-name"
                  type="text"
                  autofocus
+                 [disabled]="disabled()"
                  placeholder="Enter a name" />
+        </div>
+        <div class="grey-text right-align">
+          by {{ qp.author }}
         </div>
         <div class="input-field">
           <textarea id="qp-text" class="materialize-textarea"
                     [(ngModel)]="qp.description"
                     name="qp-text"
                     autofocus
+                    [disabled]="disabled()"
                     placeholder="Enter your description"></textarea>
         </div>
         <div class="grey-text qp-finish-up">
@@ -23,24 +28,36 @@
         </div>
         <div class="row">
           <div class="col m4">
-            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$0.99'}" (click)="selectPrice('$0.99')">
+            <button class="btn blue-grey qp-price-btn"
+                 [ngClass]="{'lighten-2': qp.price !== '$0.99', 'disabled-o': disabled() && qp.price !== '$0.99'}"
+                 [disabled]="disabled()"
+                 (click)="selectPrice('$0.99')">
               $0.99
-            </div>
+            </button>
           </div>
           <div class="col m4">
-            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$1.99'}" (click)="selectPrice('$1.99')">
+            <button class="btn blue-grey qp-price-btn"
+                 [ngClass]="{'lighten-2': qp.price !== '$1.99', 'disabled-o': disabled() && qp.price !== '$1.99'}"
+                 [disabled]="disabled()"
+                 (click)="selectPrice('$1.99')">
               $1.99
-            </div>
+            </button>
           </div>
           <div class="col m4">
-            <div class="btn blue-grey qp-price-btn" [ngClass]="{'lighten-2': qp.price !== '$2.99'}" (click)="selectPrice('$2.99')">
+            <button class="btn blue-grey qp-price-btn"
+                 [ngClass]="{'lighten-2': qp.price !== '$2.99', 'disabled-o': disabled() && qp.price !== '$2.99'}"
+                 [disabled]="disabled()"
+                 (click)="selectPrice('$2.99')">
               $2.99
-            </div>
+            </button>
           </div>
         </div>
+        <div class="grey-text" *ngIf="qp.price">
+          You will get $10 for each {{ calcProfit() }} purchased
+        </div>
       </div>
-      <div class="card-action right-align">
-        <button class="btn blue-grey" [disabled]="!unsavedChanges">
+      <div class="card-action right-align" *ngIf="!disabled()">
+        <button class="btn blue-grey" [disabled]="!unsavedChanges()">
           Save Changes
         </button>
       </div>
@@ -48,13 +65,43 @@
   </div>
 
   <div class="card" *ngIf="qp.status === 'draft'">
-      <div class="card-content action-card">
+    <div class="card-content action-card">
+      <div class="flow-text">
+        Draft
+      </div>
+      <div class="btn blue-grey" (click)="setStatus('in_review')">
+        Submit for Review
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="qp.status === 'in_review'">
+    <div class="card-content action-card">
+      <div class="flow-text">
+        <span *ngIf="!state.isAdmin()">In Review</span>
+        <span *ngIf="state.isAdmin()">Needs Your Review</span>
+      </div>
+    </div>
+    <div class="card-action right-align" *ngIf="state.isAdmin()">
+      <div class="btn blue-grey lighten-2 space-right">
+        Reject
+      </div>
+      <div class="btn blue-grey lighten-2">
+        Approve
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="qp.status === 'active'">
+    <div class="card-content action-card">
+      <div>
         <div class="flow-text">
-          Draft
+          Active
         </div>
-        <div class="btn blue-grey">
-          Submit for Review
+        <div class="grey-text">
+          14 purchased
         </div>
       </div>
+    </div>
   </div>
 </div>

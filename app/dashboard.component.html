@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <button class="btn blue-grey secondary-content" [disabled]="state.balance === '$0'">
+    Cash Out
+  </button>
+  <div class="flow-text">
+    You have <span class="balance">{{ state.balance }}</span> in your account
+  </div>
+  <br />
+  <div class="grey-text text-darken-2">
+    So far, <span class="b">2</span> people have played <span class="b">350</span> games with your Question Packs.
+  </div>
+  <br />
+  <br />
+  <div class="">
+    <div class="grey-text text-darken-2 flow-text">
+      Recent Activity
+    </div>
+    <br />
+    <div class="row b">
+      <div class="col s5">Activity</div>
+      <div class="col s3">Date</div>
+      <div class="col s2">Change</div>
+      <div class="col s2">Balance</div>
+    </div>
+    <div class="row" *ngFor="let activity of state.recentActivity">
+      <div class="col s5">{{ activity.activity }}</div>
+      <div class="col s3">{{ activity.date }}</div>
+      <div class="col s2">{{ activity.balanceChange || '-' }}</div>
+      <div class="col s2">{{ activity.balance }}</div>
+    </div>
+  </div>
+</div>

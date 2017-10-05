@@ -26,10 +26,12 @@ export class NewQPComponent {
 
   public next(form: NgForm) {
     this.qp = {
-      id: '3',
+      id: '' + (this.state.getQuestionPacks().length + 1),
       name: this.form.name,
+      description: this.form.description,
       price: '$0.00',
-      status: 'draft'
+      status: 'draft',
+      questions: this.form.questions
     };
 
     this.state.getQuestionPacks().push(this.qp);
@@ -89,14 +91,6 @@ export class NewQPComponent {
   }
 
   private newBlankQuestion() {
-    return {
-      text: '',
-      choices: [
-        '',
-        '',
-        '',
-        ''
-      ]
-    };
+    return this.state.newBlankQuestion();
   }
 }

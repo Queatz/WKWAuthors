@@ -1,3 +1,22 @@
 <div class="qp-nav">
-  <div class="grey-text flow-text">Questions</div>
+  <div class="grey-text flow-text">
+    Questions
+  </div>
+  <div>
+    <a class="qp-q-text blue-grey-text" (click)="select(i)" *ngFor="let q of qp.questions; let i = index;">
+      {{ i + 1 }}.
+      <span>{{ q.text }}</span>
+      <span class="blue-grey-text text-lighten-2" *ngIf="!q.text">Enter your question</span>
+    </a>
+  </div>
+  <div class="new-btn-wrapper">
+    <button *ngIf="!disabled()" class="btn blue-grey lighten-1" (click)="addQuestion()">
+      Add a Question
+    </button>
+    <br />
+    <br />
+    <div class="grey-text text-lighten-1">
+      Question order is random<br />and doesn't matter.
+    </div>
+  </div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { StateService } from 'app/state.service';
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'qp-edit-details',
@@ -8,26 +8,41 @@ import { StateService } from 'app/state.service';
 })
 export class QPEditDetailsComponent implements OnChanges {
   @Input() qp: any;
-  public unsavedChanges: boolean;
+  private savedCopy: any;
 
   constructor(private state: StateService) {
 
   }
 
   ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
-    for (let propName in changes) {
-      if (!changes[propName].isFirstChange()) {
-        this.unsavedChanges = true;
-        return;
-      }
-    }
+    this.savedCopy = Object.assign({}, this.qp);
   }
 
   public saveQP() {
-    this.unsavedChanges = false;
+    this.savedCopy = Object.assign({}, this.qp);
+
+    return false;
+  }
+
+  public unsavedChanges() {
+    return this.qp.name !== this.savedCopy.name ||
+      this.qp.description !== this.savedCopy.description ||
+      this.qp.price !== this.savedCopy.price;
   }
 
   public selectPrice(price: string) {
     this.qp.price = price;
+  }
+
+  public disabled() {
+    return this.qp.status !== 'draft';
+  }
+
+  public setStatus(status: string) {
+    this.qp.status = status;
+  }
+
+  public calcProfit() {
+    return Math.ceil(20 / +this.qp.price.slice(1));
   }
 }

@@ -2,28 +2,32 @@ declare var gapi: any;
 
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class StateService {
   public user: any;
   public ready: boolean;
+  private questionPacks: any;
+  private questionPacksNeedingReview: any;
 
-  private questionPacks = [
+  public balance: string = '$0.98';
+
+  public recentActivity = [
     {
-      id: '1',
-      name: 'Quesiton pack 1',
-      price: '$0.99',
-      status: 'active'
+      activity: 'Purchase of Forest Sex Adventure',
+      date: 'Sun Nov 9, 2016',
+      balanceChange: '+$0.98',
+      balance: '$0.98',
     },
     {
-      id: '2',
-      name: 'Forest Sex Adventure',
-      price: '$2.99',
-      status: 'active'
+      activity: 'Account Created',
+      date: 'Sun Oct 30, 2016',
+      balance: '$0',
     }
   ];
 
-  constructor(private router: Router, private ngZone: NgZone) {
+  constructor(private api: ApiService, private router: Router, private ngZone: NgZone) {
     gapi.load('auth2', () => {
       gapi.auth2.init();
       var auth2 = gapi.auth2.getAuthInstance();
@@ -36,6 +40,14 @@ export class StateService {
           }
         });
       }
+    });
+
+    this.api.getQuestionPacks().then((qps: any) => {
+      this.questionPacks = qps;
+    });
+
+    this.api.getQuestionPacksNeedingReview().then((qps: any) => {
+      this.questionPacksNeedingReview = qps;
     });
   }
 
@@ -76,6 +88,26 @@ export class StateService {
 
   public getQuestionPacks() {
     return this.questionPacks;
+  }
+
+  public getQuestionPacksNeedingReview() {
+    return this.questionPacksNeedingReview;
+  }
+
+  public isAdmin() {
+    return true;
+  }
+
+  public newBlankQuestion() {
+    return {
+      text: '',
+      choices: [
+        '',
+        '',
+        '',
+        ''
+      ]
+    };
   }
 
 }
