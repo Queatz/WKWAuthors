@@ -5,8 +5,8 @@ import { StateService }   from './state.service';
 
 @Component({
   selector: 'new-qp',
-  templateUrl: 'app/new-qp.component.html',
-  styleUrls: ['app/new-qp.component.css']
+  templateUrl: './new-qp.component.html',
+  styleUrls: ['./new-qp.component.css']
 })
 export class NewQPComponent {
   public form: any = {
@@ -37,7 +37,7 @@ export class NewQPComponent {
     this.state.getQuestionPacks().push(this.qp);
 
     this.questionIndex = 0;
-    this.questionPackSize = 1; // 40
+    this.questionPackSize = 40;
     this.form.questions.push(this.newBlankQuestion());
     this.show = 'question';
 

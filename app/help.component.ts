@@ -5,8 +5,8 @@ import { ApiService } from './api.service';
 
 @Component({
   selector: 'help-screen',
-  templateUrl: 'app/help.component.html',
-  styleUrls: ['app/help.component.css']
+  templateUrl: './help.component.html',
+  styleUrls: ['./help.component.css']
 })
 export class HelpComponent {
   public form: any = {

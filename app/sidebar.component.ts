@@ -6,8 +6,8 @@ import { SidebarQPComponent } from './sidebar-qp.component';
 
 @Component({
   selector: 'sidebar',
-  templateUrl: 'app/sidebar.component.html',
-  styleUrls: ['app/sidebar.component.css'],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
   providers: [
     SidebarQPComponent
   ]

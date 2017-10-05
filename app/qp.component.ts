@@ -5,8 +5,8 @@ import { ApiService } from './api.service';
 
 @Component({
   selector: 'qp-screen',
-  templateUrl: 'app/qp.component.html',
-  styleUrls: ['app/qp.component.css']
+  templateUrl: './qp.component.html',
+  styleUrls: ['./qp.component.css']
 })
 export class QPComponent implements OnInit {
   public qpId: string;

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'signin',
     template: '<div class="google-signin" [hidden]="!state.ready"></div>',
-    styleUrls: ['app/sign-in.component.css']
+    styleUrls: ['./sign-in.component.css']
 })
 export class SigninComponent implements AfterViewInit {
   private element: any;

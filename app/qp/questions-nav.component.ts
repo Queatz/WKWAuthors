@@ -3,8 +3,8 @@ import { StateService } from '../state.service';
 
 @Component({
   selector: 'qp-questions-nav',
-  templateUrl: 'app/qp/questions-nav.component.html',
-  styleUrls: ['app/qp/questions-nav.component.css']
+  templateUrl: './questions-nav.component.html',
+  styleUrls: ['./questions-nav.component.css']
 })
 export class QPQuestionsNavComponent {
   @Input() qp: any;

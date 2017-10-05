@@ -3,8 +3,8 @@ import { StateService } from './state.service';
 
 @Component({
   selector: 'sidebar-qp',
-  templateUrl: 'app/sidebar-qp.component.html',
-  styleUrls: ['app/sidebar-qp.component.css']
+  templateUrl: './sidebar-qp.component.html',
+  styleUrls: ['./sidebar-qp.component.css']
 })
 export class SidebarQPComponent {
   @Input() qp: any;

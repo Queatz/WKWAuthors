@@ -3,8 +3,8 @@ import { StateService } from '../state.service';
 
 @Component({
   selector: 'qp-edit-details',
-  templateUrl: 'app/qp/edit-details.component.html',
-  styleUrls: ['app/qp/edit-details.component.css']
+  templateUrl: './edit-details.component.html',
+  styleUrls: ['./edit-details.component.css']
 })
 export class QPEditDetailsComponent implements OnChanges {
   @Input() qp: any;

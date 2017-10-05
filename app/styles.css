@@ -7,7 +7,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  background: url('img/bkg.png');
+  background: url('../img/bkg.png');
   background-size: 50% 100%;
 }
 

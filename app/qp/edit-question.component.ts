@@ -3,8 +3,8 @@ import { StateService } from '../state.service';
 
 @Component({
   selector: 'qp-edit-question',
-  templateUrl: 'app/qp/edit-question.component.html',
-  styleUrls: ['app/qp/edit-question.component.css']
+  templateUrl: './edit-question.component.html',
+  styleUrls: ['./edit-question.component.css']
 })
 export class QPEditQuestionComponent {
   @Input() question: any;

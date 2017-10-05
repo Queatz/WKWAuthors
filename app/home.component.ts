@@ -4,8 +4,8 @@ import { SidebarComponent } from './sidebar.component';
 
 @Component({
   selector: 'home-screen',
-  templateUrl: 'app/home.component.html',
-  styleUrls: ['app/home.component.css'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
   providers: [
     SidebarComponent
   ]
